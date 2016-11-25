@@ -12,12 +12,16 @@ import {
     View,
     Image,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    TouchableHighlight,
+    ListView
 } from 'react-native';
 import Dimensions from 'Dimensions';
 
-var deviceWidth = Dimensions.get('window').width;
-var deviceHeight = Dimensions.get('window').height;
+var Articles = require('./src/articles.js');
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 export default class hackathon extends Component {
     pressLogin() {
@@ -49,9 +53,17 @@ export default class hackathon extends Component {
                     />
                 </View>
 
-                <View style={{flex: 0.4}}>
+                <View style={{ }}>
                     <TouchableOpacity style={[login.buttonLogin, {}]} onPress={() => this.pressLogin()}>
                         <Text style={[login.textButtonLogin, {}]}>ĐĂNG NHẬP</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{ marginTop: 10, height: 30, justifyContent: "center", width: deviceWidth * 0.8 }}>
+                    <Text style={{flex: 0.3, width: deviceWidth * 0.8, textAlign: "center" }}>OR</Text>
+                </View>
+                <View style={{ flex: 0.2 }}>
+                    <TouchableOpacity style={[login.buttonRegister, {}]} onPress={() => this.pressLogin()}>
+                        <Text style={[login.textButtonRegister, {}]}>ĐĂNG KÝ</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -93,7 +105,42 @@ const login = StyleSheet.create({
         width: deviceWidth * 0.8,
         textAlign: "center",
         color: "rgb(255, 255, 255)"
+    },
+    buttonRegister: {
+        backgroundColor: "rgb(100, 179, 220)",
+        height: 40,
+        justifyContent: "center",
+        borderRadius: 5
+    },
+    textButtonRegister: {
+        width: deviceWidth * 0.8,
+        textAlign: "center",
+        color: "rgb(255, 255, 255)"
     }
 });
 
-AppRegistry.registerComponent('hackathon', () => hackathon);
+
+class Articles_2 extends Component {
+    constructor() {
+        super();
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.state = {
+            dataSource: ds.cloneWithRows([
+                {"id": 1, "name": "thanh"},
+                {"id": 2, "name": "trung"},
+                {"id": 3, "name": "tien"}
+            ])
+        };
+    }
+
+    render() {
+        return (
+            <ListView
+                dataSource={this.state.dataSource}
+                renderRow={(rowData) => <Text>{rowData.name}</Text>}
+            />
+        );
+    }
+} 
+
+AppRegistry.registerComponent('hackathon', () => Articles);
