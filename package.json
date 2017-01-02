@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "15.3.2",
     "react-native": "0.37.0",
+    "react-native-maps": "^0.12.2",
     "react-native-side-menu": "^0.20.1"
   },
   "jest": {

@@ -14,6 +14,7 @@ const SideMenu = require('react-native-side-menu');
 import Login from './src/components/Login';
 import Articles from './src/components/Articles';
 import Article from './src/components/Article';
+import Map from './src/components/Map';
 import LeftNavigation from './src/components/LeftNavigation';
 
 class Index extends React.Component {
@@ -23,6 +24,7 @@ class Index extends React.Component {
                 <Scene key="articles" component={Articles} toggle={ this.props.toggle }/>
                 <Scene key="article" component={Article} />
                 <Scene key="login" component={Login} initial={true} login={this.props.login}/>
+                <Scene key="map" component={Map} toggle={ this.props.toggle }/>
             </Scene>
         </Router>
     }

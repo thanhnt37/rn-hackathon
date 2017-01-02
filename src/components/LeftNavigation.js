@@ -70,6 +70,16 @@ module.exports = class Menu extends Component {
 
                     <TouchableOpacity
                         style={{  borderBottomWidth: 1, borderBottomColor: '#ccc' }}
+                        onPress={() => {Actions.map(); this.props.toggle()}}
+                    >
+                        <Text
+                            style={{ textAlign: "center", padding: 15, fontSize: 16 }}>
+                            Bản Đồ
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{  borderBottomWidth: 1, borderBottomColor: '#ccc' }}
                         onPress={() => { this.props.logout(); Actions.login(); this.props.toggle()}}
                     >
                         <Text
